@@ -124,7 +124,7 @@ app.get("/:customListName", function(req,res){
 
 
 let port = process.env.PORT;
-if(port == NULL||port == ""){
+if(port == null||port == ""){
     port = 3000;
 }
 app.listen(port,function(){
