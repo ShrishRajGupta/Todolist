@@ -2,8 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-
-
+const Item=require("./models/items.js")
+const List = require("./models/list.js")
 const app = express();
 
 app.set('view engine','ejs');
@@ -13,11 +13,6 @@ app.use(express.static("public"));
 
 mongoose.connect("mongodb+srv://admin-abhi:TEST-123@cluster0.8jqsezr.mongodb.net/todolistDB");
 
-const itemsSchema = new mongoose.Schema({
-    name: String
-});
-
-const Item = mongoose.model("Item", itemsSchema);
 
 const item1 = new Item({
     name: "Welcome to todo list"
@@ -31,11 +26,6 @@ const item3 = new Item({
 
 const defaultItems = [item1, item2, item3];
 
-const listSchema = {
-    name: String,
-    items:[itemsSchema]
-};
-const List = mongoose.model("List", listSchema);
 
 app.get("/",function(req,res){
     
