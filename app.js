@@ -1,17 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const app = express();
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const Item=require("./models/items.js")
 const List = require("./models/list.js")
-const app = express();
+
+const connectDB=require('./config/conn.js');
+connectDB();
 
 app.set('view engine','ejs');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
-
-mongoose.connect("mongodb+srv://admin-abhi:TEST-123@cluster0.8jqsezr.mongodb.net/todolistDB");
+const port = process.env.PORT || 3000;
 
 
 const item1 = new Item({
@@ -112,11 +114,6 @@ app.get("/:customListName", function(req,res){
     
 });
 
-
-let port = process.env.PORT;
-if(port == null||port == ""){
-    port = 3000;
-}
-app.listen(port,function(){
-    console.log("SERVER STARTED SUCCESSFULLY");
+app.listen(port,()=>{
+    console.log("Listening to port = "+port);
 });
