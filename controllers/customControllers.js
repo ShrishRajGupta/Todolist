@@ -1,8 +1,7 @@
-const asyncHandler = require('express-async-handler');
-const List = require("../models/list.js")
-const Item = require("../models/items.js");
-
 const _ = require("lodash");
+const asyncHandler = require('express-async-handler');
+const List = require("../models/list.js");
+
 const defaultItems = require("../default.js");
 
 const customList = asyncHandler(async(req,res)=>{

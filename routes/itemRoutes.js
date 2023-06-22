@@ -1,4 +1,3 @@
-
 const express = require('express');
 const { getItems, postItems, deleteItems } = require('../controllers/itemControllers');
 const router = express.Router();
